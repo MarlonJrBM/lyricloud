@@ -5,8 +5,10 @@ define ("STOPWORDS", "able,about,above,according,accordingly,across,actually,aft
 
 function filter_stopwords($words) {
 
+	$stopwords = explode(",", STOPWORDS);
+
 	foreach ($words as $pos => $word) {
-		if (!in_array(strtolower($word), STOPWORDS, TRUE)) {
+		if (!in_array(strtolower($word), $stopwords, TRUE)) {
 			$filtered_words[$pos] = $word;
 		}
 	}
@@ -15,7 +17,12 @@ function filter_stopwords($words) {
 
 }
 
-function generate_frequency_list($words) {
+function generate_frequency_list($words, $is_filtered) {
+	//Can both generate new frequency list or append to existing one
+
+	if ($is_filtered) {
+		$words = filter_stopwords($words);
+	}
 
 	$frequency_list = array();
 
@@ -34,6 +41,27 @@ function generate_frequency_list($words) {
 	return $frequency_list;
 
 }
+
+function merge_frequency_lists($old_list, $new_list) {
+
+	if ($old_list==NULL) {
+		$old_list = array();
+	}
+
+	foreach ($new_list as $word => $frequency) {
+		$word = strtolower($word);
+		if (array_key_exists($word, $old_list)) {
+			$old_list[$word] += $frequency;
+
+		} else {
+			$old_list[$word] = $frequency;
+		}
+	}
+
+	return $old_list;
+
+}
+
 
 
 
