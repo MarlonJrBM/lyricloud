@@ -1,0 +1,19 @@
+body {
+	background-color: gray;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.pageHeading {
+	/*color: black;*/
+	color: purple;
+	text-align: center;
+	font-size: 300%;
+}
+
+#wordCloud {
+	height: 55vh;
+	background-color: gray;
+	border: none;
+}

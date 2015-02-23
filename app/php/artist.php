@@ -3,66 +3,50 @@
 require_once 'song.php';
 
 class Artist {
-
 	private $name;
 	private $songs;
-	private $global_freq_map; //frequency map for all artist's songs
+	private $artistFreqMap; //frequency map for all artist's songs
 
-	public function __construct($name="") {
+	public function __construct($name = "") {
 		//Review constructor
 		$this->name = $name;
 		$this->songs = array();
-		$this->global_freq_map = array();
+		$this->artistFreqMap = array();
 	}
 
-	public function get_name() {
+	public function getName() {
 		return $this->name;
 	}
 
-	public function set_name($name) {
-		$this->name = $name;
+	public function setName($newName) {
+		$this->name = $newName;
 	}
 
-	public function get_songs() {
+	public function getSongs() {
 		return $this->songs;
 	}
 
-	public function set_songs($songs) {
-		$this->songs = $songs;
-		$this->global_freq_map = array();
-		foreach($songs as $song) {
-			$this->update_global_freq_map($song->get_freq_map());
+	public function setSongs($newSongs) {
+		$this->songs = $newSongs;
+		$this->artistFreqMap = array();
+		foreach($newSongs as $newSong) {
+			$this->updateArtistFreqMap($newSong->getFreqMap());
 		}
 	}
 
-	public function add_song($song) {
-		$this->songs[] = $song; //PHP way to push value to an array
-		$this->update_global_freq_map($song->get_freq_map());
+	public function addSong($newSong) {
+		// $this->songs[] = $song; //PHP way to push value to an array
+		array_push($this->songs, $newSong);
+		$this->updateArtistFreqMap($newSong->getFreqMap());
 	}
 
-	public function get_global_freq_map() {
-		return $this->global_freq_map;
+	public function getArtistFreqMap() {
+		return $this->artistFreqMap;
 	}
 
-	private function update_global_freq_map($new_freq_map) {
-		$this->global_freq_map = merge_frequency_lists($this->global_freq_map, $new_freq_map);
-
+	private function updateArtistFreqMap($newFreqMap) {
+		$this->artistFreqMap = mergeFrequencyLists($this->artistFreqMap, $newFreqMap);
 	}
-
-
 }
 
-//Below is test code, uncomment to "test" class
-
-
-	// $mayer = new Artist('John Mayer');
-	// $mayer->add_song($trust_myself);
-	// $mayer->add_song($gravity);
-	// $soundgarden = new Artist("SoundGarden");
-	// $soundgarden->add_song($black_hole_sun);
-
-
-
 ?>
-
-

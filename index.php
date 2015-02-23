@@ -1,87 +1,63 @@
-
-<!doctype html>
-
+<!DOCTYPE html>
 <html class="no-js" lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Title -->
     <title>Lyricloud | Welcome</title>
-    <link rel="stylesheet" href="other/foundation/css/foundation.css" />
-	<link rel="stylesheet" href="assets/css/style.css">
-    <script src="other/foundation/js/vendor/modernizr.js"></script>
-  </head>
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/libs/foundation/css/foundation.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="app/css/style.css">
+	<!-- Scripts -->
+    <script src="assets/libs/foundation/js/vendor/modernizr.js"></script>
+</head>
 <body>
-<div id="fb-root"></div>
-<!-- Facebook share, include Javascript SDK. For non-foundation share at least, havent gotten to work with foundation. -->
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script>
-//Simple proof of concept function to toggle proper visibility
-function myFunction() {
-	var e = document.getElementById("lyricCloud");
-	e.style.visibility = "visible";
-    alert("The form was submitted");
-}
-</script>
+	<!-- Facebook share, include Javascript SDK. For non-foundation share at least, havent gotten to work with foundation. -->
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
-<h1 class="pageHeading">Lyricloud</h1>
+	<!-- Page Header -->
+	<h1 class="pageHeading">LyriCloud</h1>
 
+	<!-- Word Cloud -->
 	<div class="row" style="height:60%">
-		<div class="panel" style="height:100%; visibility:hidden" id="lyricCloud">
+		<div class="panel" id="wordCloud"></div>
+	</div>
+
+	<!-- User interaction area -->
+	<div class="row">
+		<!-- Artist Search Input -->
+		<div class="large-4 large-centered columns">
+			<form action="" id="artistForm">
+			    <label>Artist Name</label>
+			    <input type="text" id="artistInput" placeholder="Enter Artist Name"/>
+			</form>
+		</div>
+		<!-- Buttons -->
+		<div class="large-8 large-centered columns">
+			<div class="row">
+				<!-- Add to Cloud Button -->
+				<input class="small round button large-4 columns" type="button" id="addToCloudButton" value="Add To Cloud"/>
+				<!-- Submit Button -->
+				<input class="small round button large-4 columns" type="button" id="submitButton" value="Submit"/>
+				<!--Facebook Share Button-->
+				<button class="small round large-4 columns" id="shareButton">Share <i class="fa fa-facebook-square"></i></button>
+			</div>
 		</div>
 	</div>
-	<div class="row">
-		<form action="" onSubmit="myFunction()">
-			<div class="row">
-				<div class="large-4 large-centered columns">
-				    <label>Artist Name</label>
-				    <input type="text" placeholder="Enter Artist Name" />
-				</div>
-				<div class="large-8 large-centered columns">
-					<input class="small round button large-4 " type="submit" name="addToCloud" value="Add To Cloud" />
-					<input class="small round button large-4 large-centered" type="submit" name="submit" value="Submit" />
-					 <!--Facebook Share Button-->
-					<input class="small round button large-3" type="submit" name="share" value="Share" /> 
-	
-				</div>
-			</div> 
-		</form>
-	</div>
-	<script src="js/vendor/jquery.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
+
+	<!-- Scripts -->
+	<script src="assets/libs/foundation/js/vendor/jquery.js"></script>
+    <script src="assets/libs/foundation/js/foundation.min.js"></script>
+    <script src="app/js/main.js"></script>
 </body>
 </html>
-<!--
-<div class="pageContainer" style="margin-left:10%;margin-right:10%" >
-	<div id="lyricCloud" >
-			<?PHP
-				//???
-			?>
-	</div>
-	<div id="buttonContainer" style="width=50%" align="center">
-		<form>
-			<input style="width:35%;"  type="textfield" name="artistQuery" value="Input Artist Name"/>
-			<table id="greyTable" border="0">
-				<tr>
-				<?PHP
-					//????
-				?>
-					<td><input type="submit" name="addToCloud" value="Add To Cloud" class="applicationButton" /></td>
-					<!-- Facebook share button
-					<td><div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div></td> 
-				
-					<td><input type="submit" name="submit" value="Submit" class="applicationButton"/></td>
-				</tr>
-			</table>
-		</form>
-	</div>
-</div>-->
