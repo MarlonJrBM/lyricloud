@@ -1,6 +1,8 @@
 <?php
 
-require_once('cloud.php');
+require_once('app_controller.php');
+
+
 
 $lyrics = <<< EOD
 	No I'm not the man I used to be lately
@@ -160,6 +162,23 @@ $lyrics3 = <<< EOD
 	Won't you come? (Black hole sun, black hole sun)
 EOD;
 
+
+?>
+
+
+
+
+
+<html>
+<head>
+<title>Please work...</title>
+<link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<?php
+
+
 // TESTING SONG CLASS
 echo "<h1>Testing Song Class</h1>";
 
@@ -222,3 +241,20 @@ $cloud->addArtist($soundgarden);
 
 echo '<h4>Global Frequency Map:</h4>';
 printr($cloud->getGlobalFreqMap());
+
+
+
+
+
+// TESTING CLOUD DISPLAY (from AppController class)
+
+echo '<h1>Testing Cloud Display (from AppController)</h1>';
+echo '<h3>Using AppController\'s generateWordCloud function</h3>';
+$appController = new AppController();
+echo $appController->generateWordCloud($cloud);
+echo '<br/>'
+
+?>
+
+</body>
+</html>

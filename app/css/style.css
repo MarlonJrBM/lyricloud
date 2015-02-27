@@ -17,3 +17,18 @@ body {
 	background-color: gray;
 	border: none;
 }
+
+.cloud {
+	max-width: 800px;
+	border: 5px groove beige;
+	padding: 10px;
+
+}
+
+.cloud a {
+	text-decoration: none;
+}
+
+.cloud span {
+	margin-right: 25px;
+}
