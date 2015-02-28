@@ -26,6 +26,16 @@ class Artist {
 		return $this->songs;
 	}
 
+	public function getSong($song_title) {
+		foreach ($this->songs as $song) {
+			if (strtolower($song->getTitle()) == strtolower($song_title)) {
+				return $song;
+			}
+		}
+
+		return NULL; //song doesn't exist
+	}
+
 	public function setSongs($newSongs) {
 		$this->songs = $newSongs;
 		$this->artistFreqMap = array();

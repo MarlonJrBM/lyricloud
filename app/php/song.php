@@ -45,10 +45,18 @@ class Song {
 		return $this->freqMap;
 	}
 
+	public function getWordFreq($word) {
+		return ($this->freqMap[$word]);
+	}
+
+	public function hasWord($word) {
+		return (array_key_exists($word, $this->freqMap));
+	}
+
 	private function updateFreqMap() {
 		if(!empty($this->lyrics)) {
 			// Get all words
-			$lyricsWordArr = array_values(str_word_count($this->lyrics, 1));
+			$lyricsWordArr = array_values(str_word_count(strtolower($this->lyrics), 1));
 			// Filter out stop words
 			$lyricsWordArr = array_filter($lyricsWordArr, "filterStopwords");
 			// Get word counts and update frequency map
