@@ -5,8 +5,11 @@ require_once ('api-handler.php');
 
 
 //Just for testing 
-$artistName = "U2";
-$isNewCloud = TRUE;
+// $artistName = "U2";
+// $isNewCloud = TRUE;
+
+$artistName = $_POST['artistName'];
+$isNewCloud = $_POST['isNewCloud'];
 
 
 if (!APIHandler::artist_exists($artistName)) {
