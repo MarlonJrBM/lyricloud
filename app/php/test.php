@@ -250,16 +250,15 @@ EOD;
 
 	echo '<h1>Testing Cloud Display (from AppController)</h1>';
 	echo '<h3>Using AppController\'s displayWordCloud function</h3>';
-	$appController = new AppController();
-	$appController->setCloud($cloud);
-	echo $appController->displayCloud($cloud);
+	AppController::setCloud($cloud);
+	echo AppController::displayCloud($cloud);
 	echo '<br/>';
 
 
 // TESTING SONG LIST DISPLAY (from AppController class)
 	echo '<h1>Testing SongList (from AppController)</h1>';
 	echo '<h3>Using AppController\'s generateSongList function using "love" as parameter </h3>';
-	printr($appController->generateSongList("love"));
+	printr(AppController::generateSongList("love"));
 	echo '<br/>';
 
 
@@ -267,7 +266,7 @@ EOD;
 
 	echo '<h1>Testing Lyrics Display (from AppController)</h1>';
 	echo '<h3>Using AppController\'s displayLyrics function using "Black Hole Sun" as parameter </h3>';
-	echo ($appController->displayLyrics("BlAcK HolE Sun"));
+	echo (AppController::displayLyrics("BlAcK HolE Sun"));
 	echo '<br/>';
 
 	?>

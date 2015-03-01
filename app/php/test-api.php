@@ -42,7 +42,6 @@ $cloud->addArtist($artist);
 	<?php
 
 		echo $app->displayCloud($cloud);
-	
 
 	?>
 

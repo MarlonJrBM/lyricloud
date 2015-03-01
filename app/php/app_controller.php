@@ -2,6 +2,7 @@
 
 require_once ('cloud.php');
 
+
 define ('MAX_FONT_SIZE', 100);
 define ('MIN_FONT_SIZE', 10);
 define ('SONG_NOT_FOUND_ERROR', '<p class="error">An error ocurred. The song you entered does not exist.</p>');
@@ -9,32 +10,40 @@ define ('SONG_NOT_FOUND_ERROR', '<p class="error">An error ocurred. The song you
 
 class AppController {
 
-	private $cloud;
+	private static $cloud;
 
-	function initializeApp() {
+	public static function initializeApp() {
 		//TODO
 		
 	}
 
-	function addArtistToCloud($string) {
-		//TODO
+	/*
+	* Adds artist to cloud
+	*
+	* @param Artist artist object
+	* @return void
+	*/
+	public static function addArtistToCloud($artist) {
 		
+		static::$cloud->addArtist($artist);		
 	}
 
-	function generateCloud() {
-		$cloud = new Cloud();
+	public static function generateCloud() {
+		static::$cloud = new Cloud();
 	}
 
-	function setCloud($cloud) {
-		$this->cloud = $cloud;
+	public static function setCloud($cloud) {
+		static::$cloud = $cloud;
 	}
 
 
 	/* Returns WordCloud's HTML Code.
 	Takes as parameter Cloud object */
-	function displayCloud($cloud) {
+	public static function displayCloud() {
 		
-		$cloudHTML = "<div class=\"cloud\">";		
+		$cloudHTML = "<div class=\"cloud\">";
+
+		$cloud = static::$cloud; //Yes I'm very lazy
 
 		/* Initialize variables for normalization algorithm */
 		$tMin = min($cloud->getGlobalFreqMap()); /*  lower-bound for word frequency */
@@ -68,15 +77,16 @@ class AppController {
 	}
 
 
-	/*  Given $word, will return a $songList dictionary which maps song)title to $word_frequency in that song  */
+	/*  Given $word, will return a $songList dictionary which maps song_title to $word_frequency in that song  */
 
-	function generateSongList($word) {
+public static function generateSongList($word) {
 
 		$songList = array(); //MAP: SONG_TITLE (STRING) => WORD_FREQUENCY (INT)
 
 
+
 		//will iterate through every song of each artist looking for word. If it exists, will push to $songList array
-		foreach ($this->cloud->getArtists() as $artist) {
+		foreach (static::$cloud->getArtists() as $artist) {
 			foreach ($artist->getSongs() as $song) {
 				if ($song->hasWord($word)) {
 					$songList[$song->getTitle()] = $song->getWordFreq($word);
@@ -93,10 +103,10 @@ class AppController {
 
 	/* Given $song_title, will return the lyrics for that song    */
 
-	function displayLyrics($song_title) {
+	public static function displayLyrics($song_title) {
 		
 		//iterates through cloud's artists looking for song
-		foreach ($this->cloud->getArtists() as $artist) {
+		foreach (static::$cloud->getArtists() as $artist) {
 			$song = $artist->getSong($song_title);
 			if ($song != NULL) {
 		    //if artist has that song, return its lyrics
@@ -108,19 +118,25 @@ class AppController {
 
 	}
 
-	function isCloudSetInSession() {
-		session_start();
+	public static function isCloudSetInSession() {
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
 		return isset($_SESSION['cloud']);
 	}
 
-	function retrieveCloudFromSession() {
-		session_start();
-		$this->cloud = $_SESSION['cloud'];
+	public static function retrieveCloudFromSession() {
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
+		static::$cloud = $_SESSION['cloud'];
 	}
 
-	function setCloudInSession() {
-		session_start();
-		$_SESSION['cloud'] = $this->cloud;
+	public static function setCloudInSession() {
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
+		$_SESSION['cloud'] = static::$cloud;
 
 	}
 
