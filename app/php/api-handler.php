@@ -29,8 +29,7 @@ public static function artist_exists($artist_name) {
 */
 private static function getLyricsFromSong($song) {
 
-	$songFetched = lyrics($song["link"]);
-	return $songFetched['lyrics'];
+	return lyrics($song["link"], FALSE);
 
 }
 

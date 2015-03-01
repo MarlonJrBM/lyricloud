@@ -31,12 +31,12 @@ function tracklist( $url ){
 	
 	foreach( $html->find('ul.song_list li') as $e ){
 	
-		$id = $e->getAttribute( "data-id" );
+		// $id = $e->getAttribute( "data-id" );
 		$link = $e->find( "a", 0 )->href;
 		$title = trim( $e->find( "span.song_title", 0 )->plaintext );
 		$artist = trim( $e->find( "span.artist_name", 0 )->plaintext );
 		
-		$songs[] = array( "id" => $id, "link" => $link, "title" => $title, "artist" => $artist );
+		$songs[] = array( /*"id" => $id,*/ "link" => $link, "title" => $title, "artist" => $artist );
 	}
 	
 	return $songs;
