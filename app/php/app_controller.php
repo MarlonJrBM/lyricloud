@@ -13,7 +13,7 @@ class AppController {
 
 	function initializeApp() {
 		//TODO
-		session_start();
+		
 	}
 
 	function addArtistToCloud($string) {
@@ -108,12 +108,20 @@ class AppController {
 
 	}
 
-	function isSessionSet() {
+	function isCloudSetInSession() {
+		session_start();
 		return isset($_SESSION['cloud']);
 	}
 
 	function retrieveCloudFromSession() {
+		session_start();
 		$this->cloud = $_SESSION['cloud'];
+	}
+
+	function setCloudInSession() {
+		session_start();
+		$_SESSION['cloud'] = $this->cloud;
+
 	}
 
 }
