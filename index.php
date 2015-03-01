@@ -23,6 +23,47 @@
 		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
 		  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
+		
+		function GenCloud(){
+			var xmlHTTP;
+			xmlHTTP = new XMLHttpRequest(); 
+			
+			var inputBox = document.getElementById("artistInput");
+			var artistName = inputBox.value;
+			
+			xmlHTTP.onreadystatechange=function(){
+				if (xmlHTTP.readyState==4 && xmlHTTP.status==200){
+					document.getElementById("wordCloud").innerHTML=xmlHTTP.responseText;
+				}
+			}
+			
+			var postString = "artistName=";
+			postString = postString.concat(artistName,"&isNewCloud=true");
+			
+			xmlHTTP.open("POST","app/php/cloud-generator-test.php",true);
+			xmlHTTP.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlHTTP.send(postString);
+		}
+		function addToCloud(){
+			var xmlHTTP;
+			xmlHTTP = new XMLHttpRequest(); 
+			
+			var inputBox = document.getElementById("artistInput");
+			var artistName = inputBox.value;
+			
+			xmlHTTP.onreadystatechange=function(){
+				if (xmlHTTP.readyState==4 && xmlHTTP.status==200){
+					document.getElementById("wordCloud").innerHTML=xmlHTTP.responseText;
+				}
+			}
+			
+			var postString = "artistName=";
+			postString = postString.concat(artistName,"&isNewCloud=false");
+			
+			xmlHTTP.open("POST","app/php/cloud_generator-test.php",true);
+			xmlHTTP.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlHTTP.send(postString);
+		}
 	</script>
 
 	<!-- Page Header -->
@@ -30,7 +71,7 @@
 
 	<!-- Word Cloud -->
 	<div class="row" style="height:60%">
-		<div class="panel" id="wordCloud"></div>
+		<div class="panel" id="wordCloud"> </div>
 	</div>
 
 	<!-- User interaction area -->
@@ -46,9 +87,10 @@
 		<div class="large-8 large-centered columns">
 			<div class="row">
 				<!-- Add to Cloud Button -->
-				<input class="small round button large-4 columns" type="button" id="addToCloudButton" value="Add To Cloud"/>
+				<button class="small round large-4 columns" onclick="addToCloud()" id="addToCloudButton">Add To Cloud</button>
 				<!-- Submit Button -->
-				<input class="small round button large-4 columns" type="button" id="submitButton" value="Submit"/>
+				<!--<input class="small round button large-4 columns" type="button" id="submitButton" value="Submit"/-->
+				<button class="small round large-4 columns" onClick="GenCloud()" id="submitButton">Submit</button>
 				<!--Facebook Share Button-->
 				<button class="small round large-4 columns" id="shareButton">Share <i class="fa fa-facebook-square"></i></button>
 			</div>
