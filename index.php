@@ -40,7 +40,7 @@
 			var postString = "artistName=";
 			postString = postString.concat(artistName,"&isNewCloud=true");
 			
-			xmlHTTP.open("POST","app/php/cloud-generator-test.php",true);
+			xmlHTTP.open("POST","app/php/cloud-generator.php",true);
 			xmlHTTP.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			xmlHTTP.send(postString);
 		}
@@ -60,7 +60,7 @@
 			var postString = "artistName=";
 			postString = postString.concat(artistName,"&isNewCloud=false");
 			
-			xmlHTTP.open("POST","app/php/cloud_generator-test.php",true);
+			xmlHTTP.open("POST","app/php/cloud_generator.php",true);
 			xmlHTTP.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			xmlHTTP.send(postString);
 		}
