@@ -80,11 +80,9 @@
 
 
 	<?PHP
-<<<<<<< HEAD
+
 	include_once "app/php/app_controller.php";
-=======
-		
->>>>>>> 993e9e6d556164d07e3fd5ff56703a4ce323636b
+
 	?>
 </head>
 <body>
@@ -111,7 +109,7 @@
 	<h1 class="pageHeading">LyriCloud</h1>
 
 	<!-- Word Cloud -->
-<<<<<<< HEAD
+
 	<div class="row">
 		<div class="panel" id="wordCloud"
 		<?PHP if(AppController::isCloudSetInSession()){ 
@@ -123,15 +121,7 @@
 			echo AppController::displayCloud(); 
 		}		
 		?>  
-=======
-	<div class="row" style="height:60%">
-		<div class="panel" id="wordCloud" <?PHP if( AppController::isCloudSetInSession() ) echo 'style="background-color:white"' ?>>
-			<?PHP if( AppController::isCloudSetInSession() ){
-				AppController::retrieveCloudFromSession();
-				echo AppController::displayCloud();
-			} ?>
-		</div>
->>>>>>> 993e9e6d556164d07e3fd5ff56703a4ce323636b
+
 	</div>
 </div>
 
