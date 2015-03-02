@@ -14,7 +14,7 @@ body {
 
 #wordCloud {
 	height: 55vh;
-	background-color: white;
+	background-color: gray;
 	visibility:hidden;
 	border: none;
 }
