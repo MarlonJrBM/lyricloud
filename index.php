@@ -102,7 +102,7 @@
 	<h1 class="pageHeading">LyriCloud</h1>
 
 	<!-- Word Cloud -->
-	<div class="row" style="height:60%">
+	<div class="row">
 		<div class="panel" id="wordCloud"
 		<?PHP if(AppController::isCloudSetInSession()){ 
 			echo 'style="visibility:visible"'; 

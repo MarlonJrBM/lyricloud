@@ -3,8 +3,8 @@
 require_once ('cloud.php');
 
 
-define ('MAX_FONT_SIZE', 180);
-define ('MIN_FONT_SIZE', 20);
+define ('MAX_FONT_SIZE', 140);
+define ('MIN_FONT_SIZE', 15);
 define ('SONG_NOT_FOUND_ERROR', '<p class="error">An error ocurred. The song you entered does not exist.</p>');
 
 
