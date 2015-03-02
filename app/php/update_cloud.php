@@ -17,8 +17,8 @@ if (!APIHandler::artist_exists($artistName)) {
 	echo "Artist doesn't exist on database!";
 } else {
 
-	AppController::generateCloud();
-
+	AppController::retrieveCloudFromSession();
+	
 
 	AppController::addArtistToCloud(APIHandler::getArtistFromAPI($artistName));
 

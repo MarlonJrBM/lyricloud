@@ -3,8 +3,8 @@
 require_once ('cloud.php');
 
 
-define ('MAX_FONT_SIZE', 100);
-define ('MIN_FONT_SIZE', 10);
+define ('MAX_FONT_SIZE', 180);
+define ('MIN_FONT_SIZE', 20);
 define ('SONG_NOT_FOUND_ERROR', '<p class="error">An error ocurred. The song you entered does not exist.</p>');
 
 
@@ -37,7 +37,7 @@ class AppController {
 	}
 
 
-	/* Returns WordCloud's HTML Code.
+	/*  WordCloud's HTML Code.
 	Takes as parameter Cloud object */
 	public static function displayCloud() {
 		

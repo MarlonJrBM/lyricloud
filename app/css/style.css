@@ -1,5 +1,5 @@
 body {
-	background-color: gray;
+	background-color: #c2c2c2;
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
@@ -9,7 +9,7 @@ body {
 	/*color: black;*/
 	color: purple;
 	text-align: center;
-	font-size: 300%;
+	font-size: 500%;
 }
 
 #wordCloud {
@@ -17,6 +17,7 @@ body {
 	background-color: white;
 	visibility:hidden;
 	border: none;
+	padding: 0px;
 }
 #waitPicDiv{
     width:100%;
@@ -34,9 +35,17 @@ body {
 .cloud {
 	width: 100%;
 	height:100%;
-	border: 5px groove beige;
-	padding: 10px;
+	border: 5px groove black;
+	/*padding: 10px;*/
+}
 
+
+table tr {
+	background-color: white;
+}
+
+table td {
+	background-color: white;
 }
 
 td a
@@ -55,7 +64,7 @@ button a {
 }
 
 .cloud span {
-	margin-right: 25px;
+	margin-right: 10px;
 }
 
 .highlight {

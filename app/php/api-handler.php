@@ -1,7 +1,9 @@
 <?php
 
 require_once('../../assets/libs/genius-api/src/rapgenius.php');
+require_once('../../assets/libs/musixmatch/src/musixmatch.php');
 require_once('artist.php');
+
 
 
 class APIHandler {
