@@ -16,44 +16,24 @@
 	
 
 	<!-- Page Header -->
-	<h1 class="pageHeading">
-	<?PHP
-		if(isset($_GET['word']))
-			echo $_GET['word'];
-	?>
+	<div class = "row">
+		<div class = "small-2 large-2 columns"></div>
+			<h2 class="pageHeading"/>
+			<?PHP
+					if(isset($_GET['title']))
+					echo $_GET['title'];
+			?>
+			
+		</div>
 	</h1>
 
-	<!-- Table -->
-	<div class = "row">
-		<div class = "large-8 large-centered columns">
-			<table>
-			  <thead>
-			    <tr>
-			      <th width="600">Song Title</th>
-			      <th width="50">Frequncy</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr>
-			      <td>Baby - Justin Bieber</td>
-			      <td>30</td>
-
-			    </tr>
-			    <tr>
-			      <td>Content Goes Here</td>
-			      <td>Content Goes Here</td>
-			    </tr>
-			    <tr>
-			      <td>Content Goes Here</td>
-			      <td>Content Goes Here</td>
-			    </tr>
-			  </tbody>
-			</table>
-		</div>
+	<!-- Lyric -->
+	<div class="row" style="height:60%">
+		<div class="panel" id="lyric"></div>
 	</div>
 	<!-- Back Button -->
 	<div class="row">
-    	<div class="large-2 large-centered columns">  
+    	<div class="large-2 push-5 columns">  
 			<button class = "round">Back</button>
 		</div>
  	 </div>
