@@ -43,6 +43,8 @@
 			xmlHTTP.open("POST","app/php/cloud-generator.php",true);
 			xmlHTTP.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			xmlHTTP.send(postString);
+			
+			document.getElementById("wordCloud").innerHTML="<div id='waitPicDiv'><span class='picHelper'></span><img class='waitPic' src='http://i.stack.imgur.com/FhHRx.gif' alt='Waiting Gif' /></div>";
 		}
 		function addToCloud(){
 			var xmlHTTP;
@@ -63,6 +65,8 @@
 			xmlHTTP.open("POST","app/php/cloud_generator.php",true);
 			xmlHTTP.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 			xmlHTTP.send(postString);
+			
+			document.getElementById("wordCloud").innerHTML="<div id='waitPicDiv'><span class='picHelper'></span><img class='waitPic' src='http://i.stack.imgur.com/FhHRx.gif' alt='Waiting Gif' /></div>";
 		}
 	</script>
 
