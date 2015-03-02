@@ -1,3 +1,8 @@
+<?PHP
+	include_once "app/php/app_controller.php";
+	session_start();
+	
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -12,7 +17,7 @@
 	<!-- Scripts -->
     <script src="assets/libs/foundation/js/vendor/modernizr.js"></script>
 	<?PHP
-		include_once "app/php/app_controller.php";
+		
 	?>
 </head>
 <body>
@@ -78,16 +83,11 @@
 
 	<!-- Word Cloud -->
 	<div class="row" style="height:60%">
-		<div class="panel" id="wordCloud" 
-			<?PHP if(AppController::isCloudSetInSession()){ 
-				echo 'style="visibility:visible"'; 
-				?> 
-				>
-				<?PHP 
+		<div class="panel" id="wordCloud" <?PHP if( AppController::isCloudSetInSession() ) echo 'style="background-color:white"' ?>>
+			<?PHP if( AppController::isCloudSetInSession() ){
 				AppController::retrieveCloudFromSession();
 				echo AppController::displayCloud();
-			}		
-			?>  
+			} ?>
 		</div>
 	</div>
 

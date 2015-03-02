@@ -34,7 +34,7 @@ $('#submitButton').click(function(event) {
 	console.log('submit', artistInput);
 
 	// Show word cloud
-	$('#wordCloud').css('background-color', 'white').show();
+	$('#wordCloud').css('background-color', 'white');
 });
 
 $('#shareButton').click(function(event) {

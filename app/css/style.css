@@ -15,7 +15,6 @@ body {
 #wordCloud {
 	height: 55vh;
 	background-color: gray;
-	visibility:hidden;
 	border: none;
 }
 #waitPicDiv{
