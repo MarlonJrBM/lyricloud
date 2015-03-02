@@ -12,7 +12,7 @@ class Song {
 		//Review Constructor
 		$this->title = $title;
 		$this->artist = $artist;
-		$this->lyrics = $lyrics;
+		$this->lyrics = filterLyrics($lyrics);
 		$this->updateFreqMap();
 	}
 
@@ -52,6 +52,7 @@ class Song {
 	public function hasWord($word) {
 		return (array_key_exists($word, $this->freqMap));
 	}
+
 
 	private function updateFreqMap() {
 		if(!empty($this->lyrics)) {
