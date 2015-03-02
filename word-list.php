@@ -13,7 +13,17 @@
     <script src="assets/libs/foundation/js/vendor/modernizr.js"></script>
 </head>
 <body>
-	
+	<!-- Facebook share, include Javascript SDK. For non-foundation share at least, havent gotten to work with foundation. -->
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
 	<!-- Page Header -->
 	<h1 class="pageHeading">
@@ -53,7 +63,7 @@
 	</div>
 	<!-- Back Button -->
 	<div class="row">
-    	<div class="large-2 large-centered columns">  
+    	<div class="large-2 push-5 columns">  
 			<button class = "round">Back</button>
 		</div>
  	 </div>
