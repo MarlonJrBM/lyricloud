@@ -32,8 +32,9 @@ $(document).ready(function() {
 	// Show word cloud
 
 	if (artistInput.trim()) {
-		$('#wordCloud').css('background-color', 'white').show();
+		$('#wordCloud').show();
 		genCloud();
+		
 
 	}
 
@@ -75,6 +76,8 @@ function genCloud(){
 	xmlHTTP.onreadystatechange=function(){
 		if (xmlHTTP.readyState==4 && xmlHTTP.status==200){
 			document.getElementById("wordCloud").innerHTML=xmlHTTP.responseText;
+			document.getElementById("addToCloudButton").style.visibility = "visible";
+
 		}
 	}
 
@@ -84,6 +87,8 @@ function genCloud(){
 	xmlHTTP.open("POST","app/php/cloud-generator.php",true);
 	xmlHTTP.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlHTTP.send(postString);
+	
+	
 
 	document.getElementById("wordCloud").innerHTML="<div id='waitPicDiv'><span class='picHelper'></span><img class='waitPic' src='http://i.stack.imgur.com/FhHRx.gif' alt='Waiting Gif' /></div>";
 }
@@ -110,5 +115,3 @@ function addToCloud(){
 
 	document.getElementById("wordCloud").innerHTML="<div id='waitPicDiv'><span class='picHelper'></span><img class='waitPic' src='http://i.stack.imgur.com/FhHRx.gif' alt='Waiting Gif' /></div>";
 }
-
-
