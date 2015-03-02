@@ -14,7 +14,7 @@ function filterStopwords($word) {
 //Filters out [chorus] and [verse] indicators found in some lyrics provided by the API
 function filterLyrics($lyrics) {
 
-	$pattern = "/\[.*(chorus|verse|hook|produced).*\]/i";
+	$pattern = "/\[.*(chorus|verse|hook|produced|bridge|).*\]/i";
 
 	return preg_replace($pattern, "", $lyrics);
 }

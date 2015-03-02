@@ -41,7 +41,7 @@ class AppController {
 	Takes as parameter Cloud object */
 	public static function displayCloud() {
 		
-		$cloudHTML = "<div class=\"cloud\">";
+		$cloudHTML = "<div id =\"cloudContent\" class=\"cloud\">";
 
 		$cloud = static::$cloud; //Yes I'm very lazy
 

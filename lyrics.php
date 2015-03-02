@@ -11,9 +11,9 @@ AppController::retrieveCloudFromSession();
 $lyrics = AppController::getLyrics($_GET['song']);
 
 // $Gotta modularize the next two lines into separate concern
-$pattern = "/(" . $_GET['word'] . ") /i";
+$pattern = "/(" . $_GET['word'] .")([\s,.!?:;])/i";
 
-$lyrics = preg_replace($pattern, '<span class="highlight">${1}</span> ', $lyrics);
+$lyrics = preg_replace($pattern, '<span class="highlight">${1}</span>${2}', $lyrics);
 
 // printr($songList);
 
