@@ -139,7 +139,10 @@
 		<div class="row">
 			<!-- Add to Cloud Button -->
 			<?PHP if(AppController::isCloudSetInSession()){ 
-				echo '<button class="small round large-4 columns"  id="addToCloudButton">Add To Cloud</button>'; }
+				echo '<button class="small round large-4 columns"  id="addToCloudButton">Add To Cloud</button>'; } else {
+			echo '<button style="visibility:hidden" class="small round large-4 columns"  id="addToCloudButton">Add To Cloud</button>';				
+
+}
 				?> 
 				<!-- Submit Button -->
 				<!--<input class="small round button large-4 columns" type="button" id="submitButton" value="Submit"/-->
