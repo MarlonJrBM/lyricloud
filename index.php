@@ -85,7 +85,7 @@
 				>
 				<?PHP 
 				AppController::retrieveCloudFromSession();
-				AppController::displayCloud() 
+				echo AppController::displayCloud();
 			}		
 			?>  
 		</div>
