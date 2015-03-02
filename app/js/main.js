@@ -2,7 +2,6 @@ $(document).foundation();
 
 // Initially hide word cloud div
 $(document).ready(function() {
-	$('#wordCloud').hide();
 });
 
 $('#artistForm').submit(function(event) {

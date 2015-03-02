@@ -11,6 +11,9 @@
 	<link rel="stylesheet" href="app/css/style.css">
 	<!-- Scripts -->
     <script src="assets/libs/foundation/js/vendor/modernizr.js"></script>
+	<?PHP
+		include_once "app/php/app_controller.php";
+	?>
 </head>
 <body>
 	<!-- Facebook share, include Javascript SDK. For non-foundation share at least, havent gotten to work with foundation. -->
@@ -75,7 +78,17 @@
 
 	<!-- Word Cloud -->
 	<div class="row" style="height:60%">
-		<div class="panel" id="wordCloud"> </div>
+		<div class="panel" id="wordCloud" 
+			<?PHP if(AppController::isCloudSetInSession()){ 
+				echo 'style="visibility:visible"'; 
+				?> 
+				>
+				<?PHP 
+				AppController::retrieveCloudFromSession();
+				AppController::displayCloud() 
+			}		
+			?>  
+		</div>
 	</div>
 
 	<!-- User interaction area -->
