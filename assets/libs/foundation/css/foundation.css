@@ -5216,9 +5216,9 @@ ul.off-canvas-list {
       left: 0 !important; }
 
 table {
-  background: #FFFFFF;
+  background: gray;
   margin-bottom: 1.25rem;
-  border: solid 1px #DDDDDD;
+  border: solid 1px gray;
   table-layout: auto; }
   table caption {
     background: transparent;
@@ -5226,7 +5226,7 @@ table {
     font-size: 1rem;
     font-weight: bold; }
   table thead {
-    background: #F5F5F5; }
+    background: gray; }
     table thead tr th,
     table thead tr td {
       padding: 0.5rem 0.625rem 0.625rem;
@@ -5248,7 +5248,7 @@ table {
     color: #222222;
     text-align: left; }
   table tr.even, table tr.alt, table tr:nth-of-type(even) {
-    background: #F9F9F9; }
+    background: grey; }
   table thead tr th,
   table tfoot tr th,
   table tfoot tr td,
