@@ -50,6 +50,10 @@ class Song {
 	}
 
 	public function hasWord($word) {
+		if ($this->freqMap==NULL) {
+			return false;
+		}
+
 		return (array_key_exists($word, $this->freqMap));
 	}
 

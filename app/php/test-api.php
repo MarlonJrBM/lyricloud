@@ -7,8 +7,8 @@ require_once ('api-handler.php');
 // $artistName = "U2";
 // $isNewCloud = TRUE;
 
-$artistName = "2 chainz";
-$isNewCloud = TRUE;
+$artistName = "U2";
+$isNewCloud = FALSE;
 
 
 if (!APIHandler::artist_exists($artistName)) {
@@ -68,13 +68,19 @@ if (!APIHandler::artist_exists($artistName)) {
 
 	echo '<br/><br/>';
 
-	echo lyrics("http://genius.com/Guns-n-roses-dead-horse-lyrics", FALSE);
+	echo '<h2>Number of Artists</h2>';
+
+	echo $cloud->getNumArtists();
 
 	echo '<br/><br/>';
 
-	$song = new Song("Dead Horse", "Guns N Roses", lyrics("http://genius.com/Guns-n-roses-dead-horse-lyrics", FALSE) );
+	// echo lyrics("http://genius.com/Guns-n-roses-dead-horse-lyrics", FALSE);
 
-	print_r($song);
+	// echo '<br/><br/>';
+
+	// $song = new Song("Dead Horse", "Guns N Roses", lyrics("http://genius.com/Guns-n-roses-dead-horse-lyrics", FALSE) );
+
+	// print_r($song);
 
 
 

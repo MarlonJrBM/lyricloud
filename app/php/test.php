@@ -257,16 +257,16 @@ EOD;
 
 // TESTING SONG LIST DISPLAY (from AppController class)
 	echo '<h1>Testing SongList (from AppController)</h1>';
-	echo '<h3>Using AppController\'s generateSongList function using "love" as parameter </h3>';
-	printr(AppController::generateSongList("love"));
+	echo '<h3>Using AppController\'s getSongList function using "love" as parameter </h3>';
+	printr(AppController::getSongList("love"));
 	echo '<br/>';
 
 
 //TESTING LYRICS DISPLAY (from AppController class)
 
 	echo '<h1>Testing Lyrics Display (from AppController)</h1>';
-	echo '<h3>Using AppController\'s displayLyrics function using "Black Hole Sun" as parameter </h3>';
-	echo (AppController::displayLyrics("BlAcK HolE Sun"));
+	echo '<h3>Using AppController\'s getLyrics function using "Black Hole Sun" as parameter </h3>';
+	echo (AppController::getLyrics("BlAcK HolE Sun"));
 	echo '<br/>';
 
 	?>

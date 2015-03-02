@@ -1,10 +1,31 @@
+<?php
+
+require_once('app/php/app_controller.php');
+
+if (!isset($_GET['word'])) {
+	header("Location: /lyricloud");
+}
+
+AppController::retrieveCloudFromSession();
+
+$songList = AppController::getSongList($_GET['word']);
+
+$word = $_GET['word'];
+
+// printr($songList);
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <!-- Title -->
-    <title>Lyricloud | Welcome</title>
+    <title>Lyricloud | Song List</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/libs/foundation/css/foundation.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -18,8 +39,7 @@
 	<!-- Page Header -->
 	<h1 class="pageHeading">
 	<?PHP
-		if(isset($_GET['word']))
-			echo $_GET['word'];
+		echo ucfirst($_GET['word'])
 	?>
 	</h1>
 
@@ -30,23 +50,18 @@
 			  <thead>
 			    <tr>
 			      <th width="600">Song Title</th>
-			      <th width="50">Frequncy</th>
+			      <th width="50">Frequency</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr>
-			      <td>Baby - Justin Bieber</td>
-			      <td>30</td>
+			  	<?php 
+			  	foreach($songList as $songTitle => $freq) {
+			  		$songSlug = createSlug($songTitle);
+			  		echo "<tr><td><a href=\"lyrics.php?song={$songSlug}&word={$word}\">{$songTitle}<a></td><td>{$freq}</td></tr>";
+			  	}
 
-			    </tr>
-			    <tr>
-			      <td>Content Goes Here</td>
-			      <td>Content Goes Here</td>
-			    </tr>
-			    <tr>
-			      <td>Content Goes Here</td>
-			      <td>Content Goes Here</td>
-			    </tr>
+			  	?>
+
 			  </tbody>
 			</table>
 		</div>
@@ -54,7 +69,7 @@
 	<!-- Back Button -->
 	<div class="row">
     	<div class="large-2 large-centered columns">  
-			<button class = "round">Back</button>
+			<a href="index.php"><button class = "round">Back to Cloud</button></a>
 		</div>
  	 </div>
 

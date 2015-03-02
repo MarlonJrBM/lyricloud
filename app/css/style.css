@@ -39,6 +39,16 @@ body {
 
 }
 
+td a
+ {
+	text-decoration: none;
+	color: #0000EE;
+}
+
+button a {
+	color: #ffffff;
+}
+
 
 .cloud a {
 	text-decoration: none;
@@ -46,4 +56,8 @@ body {
 
 .cloud span {
 	margin-right: 25px;
+}
+
+.highlight {
+	background-color: #fff2a8;
 }

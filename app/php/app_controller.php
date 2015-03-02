@@ -66,7 +66,7 @@ class AppController {
 
 
 			if ($fontSize >= MIN_FONT_SIZE) {
-				$cloudHTML .= "<a href=\"word-list.php?word={$word}\"><span style=\"font-size: {$fontSize}px; color: $color;\">$word</span></a> ";
+				$cloudHTML .= "<a href=\"song-list.php?word={$word}\"><span style=\"font-size: {$fontSize}px; color: $color;\">$word</span></a> ";
 			}
 
 		}
@@ -85,7 +85,7 @@ class AppController {
 
 	/*  Given $word, will return a $songList dictionary which maps song_title to $word_frequency in that song  */
 
-public static function generateSongList($word) {
+	public static function getSongList($word) {
 
 		$songList = array(); //MAP: SONG_TITLE (STRING) => WORD_FREQUENCY (INT)
 
@@ -107,9 +107,21 @@ public static function generateSongList($word) {
 
 	}
 
+	public static function getSongTitleBySlug($song_slug) {
+		foreach (self::$cloud->getArtists() as $artist) {
+			$song = $artist->getSong($song_slug);
+			if ($song != NULL) {
+				return $song->getTitle();			
+			}
+
+		}
+
+		return $song_slug; //Something went wrong 
+	}
+
 	/* Given $song_title, will return the lyrics for that song    */
 
-	public static function displayLyrics($song_title) {
+	public static function getLyrics($song_title) {
 		
 		//iterates through cloud's artists looking for song
 		foreach (static::$cloud->getArtists() as $artist) {
@@ -125,21 +137,22 @@ public static function generateSongList($word) {
 	}
 
 	public static function isCloudSetInSession() {
-		if (session_status() == PHP_SESSION_NONE) {
+		if (!isset($_SESSION)) {
 			session_start();
 		}
 		return isset($_SESSION['cloud']);
 	}
 
 	public static function retrieveCloudFromSession() {
-		if (session_status() == PHP_SESSION_NONE) {
+		if (!isset($_SESSION)) {
 			session_start();
 		}
+
 		static::$cloud = $_SESSION['cloud'];
 	}
 
 	public static function setCloudInSession() {
-		if (session_status() == PHP_SESSION_NONE) {
+		if (!isset($_SESSION)) {
 			session_start();
 		}
 		$_SESSION['cloud'] = static::$cloud;

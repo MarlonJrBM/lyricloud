@@ -28,7 +28,8 @@ class Artist {
 
 	public function getSong($song_title) {
 		foreach ($this->songs as $song) {
-			if (strtolower($song->getTitle()) == strtolower($song_title)) {
+			if (createSlug(strtolower($song->getTitle())) == strtolower($song_title)) {
+				//workaround to fix the fact that the song object has no ID
 				return $song;
 			}
 		}

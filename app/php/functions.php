@@ -14,7 +14,7 @@ function filterStopwords($word) {
 //Filters out [chorus] and [verse] indicators found in some lyrics provided by the API
 function filterLyrics($lyrics) {
 
-	$pattern = "/\[.*(chorus|verse|hook).*\]/i";
+	$pattern = "/\[.*(chorus|verse|hook|produced).*\]/i";
 
 	return preg_replace($pattern, "", $lyrics);
 }
@@ -28,7 +28,7 @@ function createSlug($string) {
 
 	$slug = preg_replace("/-+/i", "-", $slug); //gets rid of tricky dashes
 
-	return $slug;
+	return strtolower($slug);
 
 }
 
