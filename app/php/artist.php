@@ -36,6 +36,10 @@ class Artist {
 		return NULL; //song doesn't exist
 	}
 
+	public function getNumSongs() {
+		return count($this->songs);
+	}
+
 	public function hasSong($song_title) {
 		foreach ($this->songs as $song) {
 			if (strtolower($song->getTitle()) == strtolower($song_title)) {

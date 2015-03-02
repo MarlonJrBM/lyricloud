@@ -10,6 +10,28 @@ function filterStopwords($word) {
 	return !in_array(strtolower($word), $stopwords, true);
 }
 
+
+//Filters out [chorus] and [verse] indicators found in some lyrics provided by the API
+function filterLyrics($lyrics) {
+
+	$pattern = "/\[.*(chorus|verse).*\]/i";
+
+	return preg_replace($pattern, "", $lyrics);
+}
+
+//Given a string creates a slug for it. EG: Given "Guns N' Roses" returns guns-n-roses
+ function createSlug($string) {
+
+ 	$pattern = "/('*\s+|'+)/i";
+
+	$slug = preg_replace($pattern, "-", $string);
+
+	$slug = preg_replace("/-+/i", "-", $slug); //gets rid of tricky dashes
+
+	return $slug;
+
+}
+
 // Compares word frequencies so that they can be sorted with uasort()
 function compareFrequencies($freq1, $freq2) {
 	if($freq1 == $freq2) {
@@ -31,6 +53,8 @@ function mergeFrequencyLists($oldList, $newList) {
 
 	return $frequencyList;
 }
+
+
 
 // Prints out an array in human-readable format (one key/value pair per line)
 function printr($var) {

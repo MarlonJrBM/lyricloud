@@ -12,9 +12,11 @@ class APIHandler {
 * @param string $artist_name name of the artist
 * @return bool true if artist exists, false otherwise
 */
-public static function artist_exists($artist_name) {
+public static function artist_exists($artistName) {
 
-	$html = file_get_html( 'http://genius.com/artists/' . $artist_name );
+	$artistSlug = createSlug($artistName);
+
+	$html = file_get_html( 'http://genius.com/artists/' . $artistSlug );
 
 	return $html;
 
@@ -63,7 +65,7 @@ private static function getSongsFromAlbum($album) {
 */
 private static function getAlbumsFromArtist($artist_name) {
 
-	return album_list($artist_name);
+	return album_list(createSlug($artist_name));
 
 }
 

@@ -29,6 +29,22 @@ class Cloud {
 		return $this->globalFreqMap;
 	}
 
+	public function getNumWords() {
+		return count($this->globalFreqMap);
+	}
+
+	public function getNumArtists() {
+		return count($this->artists);
+	}
+
+	public function getNumSongs() {
+		$count = 0;
+		foreach ($this->artists as $artist) {
+			$count += $artist->getNumSongs();
+		}
+		return $count;
+	}
+
 	private function updateGlobalFreqMap($newFreqMap) {
 		$this->globalFreqMap = mergeFrequencyLists($this->globalFreqMap, $newFreqMap);
 	}

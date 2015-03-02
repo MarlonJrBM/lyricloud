@@ -76,6 +76,12 @@ class AppController {
 		return $cloudHTML;
 	}
 
+	public static function getCloud() {
+
+		return self::$cloud;
+
+	}
+
 
 	/*  Given $word, will return a $songList dictionary which maps song_title to $word_frequency in that song  */
 

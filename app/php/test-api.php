@@ -1,28 +1,37 @@
 <?php
 
-require_once('app/php/api-handler.php');
-require_once('app/php/app_controller.php');
-// $albums = getAlbumsFromArtist('U2');
-// $tracklist = getSongsFromAlbum($albums[0]);
-// $lyrics = lyrics("http://genius.com/U2-even-better-than-the-real-thing-lyrics");
+require_once('app_controller.php');
+require_once ('api-handler.php');
+
+//Just for testing 
+// $artistName = "U2";
+// $isNewCloud = TRUE;
+
+$artistName = "2 Chainz";
+$isNewCloud = TRUE;
 
 
-$artist = getArtistFromAPI("U2");
-$cloud = new Cloud();
-$app = new AppController();
-$cloud->addArtist($artist);
+if (!APIHandler::artist_exists($artistName)) {
+	//gotta set header *?*
+	echo "Artist doesn't exist on database!";
+} else {
+
+	if ($isNewCloud) {
+		AppController::generateCloud();
+	} else {
+		AppController::retrieveCloudFromSession();
+	}
+
+	AppController::addArtistToCloud(APIHandler::getArtistFromAPI($artistName));
 
 
+	//if script made it this far then life is good
 
-// var_dump ($albums);
+	AppController::setCloudInSession();
+	
+}
 
-// echo '<br/><br/>';
 
-// var_dump ($tracklist);
-
-// echo '<br/><br/>';
-
-// var_dump($lyrics);
 
 ?>
 
@@ -30,7 +39,7 @@ $cloud->addArtist($artist);
 <head>
 
 	<title>WORD CLOUD TEST</title>
-	<link rel="stylesheet" href="app/css/style.css"/>
+	<link rel="stylesheet" href="../css/style.css"/>
 
 
 </head>
@@ -41,7 +50,35 @@ $cloud->addArtist($artist);
 	<br/><br/>
 	<?php
 
-		echo $app->displayCloud($cloud);
+	$cloud = AppController::getCloud();
+
+	echo AppController::displayCloud();
+
+	echo '<br/><br/>';
+
+	echo '<h2>Number of Songs</h2>';
+
+	echo $cloud->getNumSongs();
+
+	echo '<br/><br/>';
+
+	echo '<h2>Number of Words</h2>';
+
+	echo $cloud->getNumWords();
+
+	echo '<br/><br/>';
+
+	echo lyrics("http://genius.com/Guns-n-roses-dead-horse-lyrics", FALSE);
+
+	echo '<br/><br/>';
+
+	$song = new Song("Dead Horse", "Guns N Roses", lyrics("http://genius.com/Guns-n-roses-dead-horse-lyrics", FALSE) );
+
+	print_r($song);
+
+
+
+
 
 	?>
 
