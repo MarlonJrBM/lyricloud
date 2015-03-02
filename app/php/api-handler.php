@@ -78,7 +78,7 @@ private static function getAlbumsFromArtist($artist_name) {
 */
 public static function getArtistFromAPI($artist_name) {
 
-	$artist = new Artist();
+	$artist = new Artist($artist_name);
 
 	
 

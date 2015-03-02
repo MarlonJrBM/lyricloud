@@ -14,15 +14,15 @@ function filterStopwords($word) {
 //Filters out [chorus] and [verse] indicators found in some lyrics provided by the API
 function filterLyrics($lyrics) {
 
-	$pattern = "/\[.*(chorus|verse).*\]/i";
+	$pattern = "/\[.*(chorus|verse|hook).*\]/i";
 
 	return preg_replace($pattern, "", $lyrics);
 }
 
 //Given a string creates a slug for it. EG: Given "Guns N' Roses" returns guns-n-roses
- function createSlug($string) {
+function createSlug($string) {
 
- 	$pattern = "/('*\s+|'+)/i";
+	$pattern = "/('*\s+|'+)/i";
 
 	$slug = preg_replace($pattern, "-", $string);
 
@@ -44,9 +44,12 @@ function compareFrequencies($freq1, $freq2) {
 function mergeFrequencyLists($oldList, $newList) {
 	$frequencyList = !isset($oldList) ? array() : $oldList;
 
-	foreach($newList as $word => $frequency) {
-		$word = strtolower($word);
-		$frequencyList[$word] = array_key_exists($word, $frequencyList) ? ($frequencyList[$word] + $frequency) : $frequency;
+	if (is_array($newList)) {
+
+		foreach($newList as $word => $frequency) {
+			$word = strtolower($word);
+			$frequencyList[$word] = array_key_exists($word, $frequencyList) ? ($frequencyList[$word] + $frequency) : $frequency;
+		}
 	}
 
 	uasort($frequencyList, "compareFrequencies");

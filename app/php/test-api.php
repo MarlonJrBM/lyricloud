@@ -7,7 +7,7 @@ require_once ('api-handler.php');
 // $artistName = "U2";
 // $isNewCloud = TRUE;
 
-$artistName = "2 Chainz";
+$artistName = "2 chainz";
 $isNewCloud = TRUE;
 
 
