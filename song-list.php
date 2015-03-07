@@ -28,7 +28,7 @@ $word = $_GET['word'];
     <title>Lyricloud | Song List</title>
     <!-- CSS -->
     <link rel="stylesheet" href="assets/libs/foundation/css/foundation.css"/>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min">
 	<link rel="stylesheet" href="app/css/style.css">
 	<!-- Scripts -->
     <script src="assets/libs/foundation/js/vendor/modernizr.js"></script>
