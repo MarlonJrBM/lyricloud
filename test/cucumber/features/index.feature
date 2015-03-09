@@ -1,4 +1,4 @@
-Feature: Accessing LyriCloud Application
+Feature: Accessing WordCloud's Page
 
 	Scenario: Accessing Page for the first time
 

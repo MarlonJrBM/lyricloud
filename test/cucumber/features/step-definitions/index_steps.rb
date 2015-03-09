@@ -1,5 +1,7 @@
+#Main Page
+
 Given(/^that I have not accessed LyriCloud before$/) do
-   # express the regexp above with the code you wish you had
+  
 end
 
 When(/^I visit LyriCloud's homepage$/) do
@@ -70,3 +72,70 @@ Then(/^I should see a Word Cloud of two artists$/) do
 	expect(page).to have_content("falling")
 	expect(page).to have_content("girl")
 end
+
+
+
+
+# SONG LIST STEPS
+
+
+When(/^I click on a word$/) do
+  find(:xpath, "//*[@id=\"cloudContent\"]/a[1]").click
+end
+
+Then(/^I should be on the Song List Page$/) do
+  expect(current_path).to eq('/lyricloud/song-list.php')
+end
+
+Then(/^I should see the word I clicked on$/) do
+  expect(page).to have_content("Baby")
+end
+
+Then(/^I should see a list of songs and frequencies$/) do
+  expect(page).to have_content("Marry You")
+  expect(page).to have_content("11")
+end
+
+Given(/^that I am on the Song List Page$/) do
+  steps %{
+  	Given that I have generated a Word Cloud
+  	And I click on a word
+  }
+end
+
+Then(/^I should be on the Word Cloud Page$/) do
+  expect(current_path).to eq('/lyricloud/index.php')
+end
+
+
+
+# LYRICS FEATURE
+
+When(/^I click on a song$/) do
+	click_link("Marry You")
+end
+
+Then(/^I should be on the Lyrics Page$/) do
+  expect(current_path).to eq('/lyricloud/lyrics.php')
+end
+
+Then(/^I should see the song title$/) do
+  expect(page).to have_content("Marry You")
+end
+
+Then(/^I should see the song lyrics$/) do
+  expect(page).to have_content("It's a beautiful night We're looking for something dumb to do")
+end
+
+Then(/^I should see the selected word highlighted$/) do
+  expect(page).to have_selector(".highlight")
+end
+
+Given(/^that I am on the Lyrics Page$/) do
+    steps %{
+  	Given that I have generated a Word Cloud
+  	And I click on a word
+  	And I click on a song
+  }
+end
+
