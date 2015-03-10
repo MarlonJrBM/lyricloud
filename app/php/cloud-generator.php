@@ -14,7 +14,10 @@ $artistName = $_POST['artistName'];
 
 if (!APIHandler::artist_exists($artistName)) {
 	//gotta set header *?*
-	echo "Artist doesn't exist on database!";
+	echo "<div data-alert class=\"alert-box alert round\">
+  We could not find artist you were looking for. Sorry!
+  <a href=\"#\" class=\"close\">&times;</a>
+</div>";
 } else {
 
 	AppController::generateCloud();

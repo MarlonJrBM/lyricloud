@@ -14,7 +14,7 @@ $artistName = $_POST['artistName'];
 
 if (!APIHandler::artist_exists($artistName)) {
 	//gotta set header *?*
-	echo "Artist doesn't exist on database!";
+	echo "We could not find the artist you were looking for. Sorry! Please refresh page to see previously generated word cloud";
 } else {
 
 	AppController::retrieveCloudFromSession();

@@ -7,6 +7,8 @@ define ('MAX_FONT_SIZE', 140);
 define ('MIN_FONT_SIZE', 15);
 define ('SONG_NOT_FOUND_ERROR', '<p class="error">An error ocurred. The song you entered does not exist.</p>');
 
+error_reporting(0); #comment this line if you want to debug
+
 
 class AppController {
 

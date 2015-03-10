@@ -49,6 +49,11 @@ Then(/^I should see a Word Cloud$/) do
 	expect(page).to have_selector("#cloudContent")
 end
 
+Then(/^I should not see a Word Cloud$/) do
+	sleep(10)
+	expect(page).to_not have_selector("#cloudContent")
+end
+
 When(/^I type "(.*?)" in the artist search bar$/) do |arg1|
 	fill_in('artistInput', :with => arg1)
 end
@@ -73,6 +78,9 @@ Then(/^I should see a Word Cloud of two artists$/) do
 	expect(page).to have_content("girl")
 end
 
+Then(/^I should see an error message$/) do
+  expect(page).to have_content("We could not find artist you were looking for. Sorry!")
+end
 
 
 

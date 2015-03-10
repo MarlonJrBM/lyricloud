@@ -5,6 +5,7 @@ Feature: Accessing WordCloud's Page
 		Given that I have not accessed LyriCloud before
 		When I visit LyriCloud's homepage
 		Then I should see the "LyriCloud" title
+		And I should not see a Word Cloud
 		And I should see the "Submit" button
 		And I should see the "Artist Name" button
 		And I should not see the "Add Artist" button
@@ -36,5 +37,11 @@ Feature: Accessing WordCloud's Page
 		Then I should see a Word Cloud of two artists
 
 
-
-  
+	@error
+	Scenario: Searching for inexistent artist 
+  	
+  		Given that I'm in the homepage
+  		When I type "Graceful Degradation" in the artist search bar
+  		And I hit the "Submit" button
+  		Then I should not see a Word Cloud
+  		And I should see an error message

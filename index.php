@@ -1,7 +1,7 @@
 <?PHP
-	include_once "app/php/app_controller.php";
-	session_start();
-	
+include_once "app/php/app_controller.php";
+session_start();
+
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -17,12 +17,13 @@
 	<title>Lyricloud | Welcome</title>
 	<!-- CSS -->
 	<link rel="stylesheet" href="assets/libs/foundation/css/foundation.css"/>
-	<link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min">
+	<link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="app/css/style.css">
 	<!-- Scripts -->
 	<script src="assets/libs/foundation/js/vendor/jquery.js"></script>
 	<script src="assets/libs/html2canvas/html2canvas.js"></script>
 	<script src="assets/libs/foundation/js/foundation.min.js"></script>
+	<script src="assets/libs/foundation/js/vendor/modernizr.js"></script>
 	<script src="app/js/main.js"></script>
 
 	<script>
@@ -71,7 +72,7 @@
 
 	</script>
 
-	<script src="assets/libs/foundation/js/vendor/modernizr.js"></script>
+
 
 	<script>
 	
@@ -140,20 +141,27 @@
 			<!-- Add to Cloud Button -->
 			<?PHP if(AppController::isCloudSetInSession()){ 
 				echo '<button class="small round large-4 columns"  id="addToCloudButton">Add To Cloud</button>'; } else {
-			echo '<button style="visibility:hidden" class="small round large-4 columns"  id="addToCloudButton">Add To Cloud</button>';				
+					echo '<button style="visibility:hidden" class="small round large-4 columns"  id="addToCloudButton">Add To Cloud</button>';				
 
-}
+				}
 				?> 
 				<!-- Submit Button -->
 				<!--<input class="small round button large-4 columns" type="button" id="submitButton" value="Submit"/-->
 				<button class="small round large-4 columns"  id="submitButton">Submit</button>
 				<!--Facebook Share Button-->
-				<button onClick="generateCanvas()" class="small round large-4 columns" id="shareButton">Share <i class="fa fa-facebook-square"></i></button>
+
+				<?PHP if(AppController::isCloudSetInSession()){ 
+					echo '<button onClick="generateCanvas()" class="small round large-4 columns" id="shareButton">Share <i class="fa fa-facebook-square"></i></button>'; } else {
+						echo '<button style="visibility:hidden" onClick="generateCanvas()" class="small round large-4 columns" id="shareButton">Share <i class="fa fa-facebook-square"></i></button>';				
+
+					}
+					?> 
+
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Scripts -->
+		<!-- Scripts -->
 
-</body>
-</html>
+	</body>
+	</html>
