@@ -19,12 +19,15 @@ session_start();
 	<link rel="stylesheet" href="assets/libs/foundation/css/foundation.css"/>
 	<link rel="stylesheet" href="assets/libs/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="app/css/style.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/black-tie/jquery-ui.css">
 	<!-- Scripts -->
 	<script src="assets/libs/foundation/js/vendor/jquery.js"></script>
 	<script src="assets/libs/html2canvas/html2canvas.js"></script>
 	<script src="assets/libs/foundation/js/foundation.min.js"></script>
 	<script src="assets/libs/foundation/js/vendor/modernizr.js"></script>
 	<script src="app/js/main.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
 
 	<script>
 

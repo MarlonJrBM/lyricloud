@@ -3,6 +3,31 @@ $(document).foundation();
 // Initially hide word cloud div
 $(document).ready(function() {
 
+	
+	$( "#artistInput" ).autocomplete({
+		source: function( request, response ) {
+			$.ajax({
+				url: "http://developer.echonest.com/api/v4/artist/suggest",
+				dataType: "json",
+				data: {
+					api_key: "DG6T6KE6T6KSTR3S8",
+					q: request.term
+				},
+				success: function( data ) {
+					// console.log(data.response.artists);
+					artistArr = [];
+					for (ii=0;ii<data.response.artists.length;ii++) {
+						artistArr.push(data.response.artists[ii].name);
+					}
+					// console.log(artistArr)
+					response( artistArr );
+
+				}
+			});
+		},
+		minLength: 3
+	});
+
 
 
 	$('#addToCloudButton').click(function(event) {
@@ -77,6 +102,7 @@ function genCloud(){
 		if (xmlHTTP.readyState==4 && xmlHTTP.status==200){
 			document.getElementById("wordCloud").innerHTML=xmlHTTP.responseText;
 			document.getElementById("addToCloudButton").style.visibility = "visible";
+			document.getElementById("shareButton").style.visibility = "visible";
 
 		}
 	}
