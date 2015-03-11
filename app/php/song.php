@@ -46,7 +46,12 @@ class Song {
 	}
 
 	public function getWordFreq($word) {
-		return ($this->freqMap[$word]);
+		if (array_key_exists($word, $this->freqMap)) {
+			return ($this->freqMap[$word]);
+		} else {
+			return 0;
+		}
+		
 	}
 
 	public function hasWord($word) {
