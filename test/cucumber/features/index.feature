@@ -11,6 +11,13 @@ Feature: Accessing WordCloud's Page
 		And I should not see the "Add Artist" button
 		And I should not see the "Share" button
 
+		@autocomplete
+	Scenario: Artist AutoComplete
+
+		Given that I'm in the homepage
+		When I type "Bru" in the artist search bar
+		Then I should see "Bruno Mars" as a suggestion
+
 
 	Scenario: Generating Word Cloud
 

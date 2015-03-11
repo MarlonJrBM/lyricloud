@@ -83,6 +83,11 @@ Then(/^I should see an error message$/) do
 end
 
 
+Then(/^I should see "(.*?)" as a suggestion$/) do |arg1|
+  expect(page).to have_content(arg1)
+end
+
+
 
 # SONG LIST STEPS
 

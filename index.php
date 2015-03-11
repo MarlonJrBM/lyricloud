@@ -8,10 +8,10 @@ session_start();
 <head>
 
 	<meta charset="utf-8" />
-	<meta property="og:url" content="." /> 
+	<meta property="og:url" content="localhost/lyricloud" /> 
 	<meta property="og:title" content="LyriCloud" />
 	<meta property="og:description" content="Generate your favorite artist's word cloud today!" /> 
-	<meta id="fb-image" property="og:image" content="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-prn1/851565_496755187057665_544240989_n.jpg" /> 
+	<meta property="og:image" id="fb-image"  content="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-prn1/851565_496755187057665_544240989_n.jpg" /> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<!-- Title -->
 	<title>Lyricloud | Welcome</title>
@@ -43,7 +43,7 @@ session_start();
 				$.ajax({
 					url: 'https://api.imgur.com/3/image',
 					headers: {
-						'Authorization' : 'Client-ID 9c14998efb8f28e'
+						'Authorization' : 'Client-ID 56daa0b10aa238c'
 					},
 					type: 'POST',
 					data: {
@@ -52,6 +52,7 @@ session_start();
 					},
 					success: function(response) {
 						decodeImg = response.data.link;
+						$("#fb-image").attr("content", decodeImg);
 						console.log(decodeImg);
 					}, error: function() {
 						decodeImg = canvasData;
@@ -59,12 +60,13 @@ session_start();
 				});
 
 
+				//Facebook share code below. For some reason the image won't go =/
 				FB.ui({
 					method: 'feed',
-					name: 'LyriCloud',
-					picture: decodeImg,
-					caption: "Come and Build your Word Cloud for your favorite artists!"
-				});
+					href: 'localhost/lyricloud',
+					caption: 'An example caption',
+					picture: decodeImg
+				}, function(response){});
 			}
 		});
 
@@ -93,7 +95,7 @@ session_start();
 	<script>
 	window.fbAsyncInit = function() {
 		FB.init({
-			appId      : '56daa0b10aa238c',
+			appId      : '1591491227762998',
 			xfbml      : true,
 			version    : 'v2.1'
 		});
@@ -163,6 +165,7 @@ session_start();
 				</div>
 			</div>
 		</div>
+
 
 		<!-- Scripts -->
 
