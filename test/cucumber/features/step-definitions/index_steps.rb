@@ -45,7 +45,7 @@ When(/^I hit the "(.*?)" button$/) do |arg1|
 end
 
 Then(/^I should see a Word Cloud$/) do
-	sleep(45)
+	sleep(65)
 	expect(page).to have_selector("#cloudContent")
 end
 
@@ -65,7 +65,7 @@ Given(/^that I have generated a Word Cloud$/) do
 		When I type "Bruno Mars" in the artist search bar
 		And I hit the "Submit" button
 	}
-	sleep(45)
+	sleep(65)
 end
 
 Then(/^I should see the Facebook Sharing Dialog$/) do
@@ -73,7 +73,7 @@ Then(/^I should see the Facebook Sharing Dialog$/) do
 end
 
 Then(/^I should see a Word Cloud of two artists$/) do
-	sleep(76)
+	sleep(96)
 	expect(page).to have_content("falling")
 	expect(page).to have_content("girl")
 end
